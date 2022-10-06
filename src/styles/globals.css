@@ -4,13 +4,27 @@
 
 html,
 body {
-  margin: 0;
+  margin: 10% 33% 10% 33%;
+
   padding: 0;
   outline: 0;
-  height: 100vh;
+  text-align: center;
+  
   font-family: Roboto, sans-serif;
+  background-color: rgb(20, 14, 116);
 }
 
 * {
   box-sizing: border-box;
+}
+
+form {
+  height: 20vh;
+  width: 20vh;
+  background-color: rgb(202, 202, 202);
+  border-radius: 4px;
+}
+
+#form Field {
+  
 }
