@@ -9,6 +9,8 @@ body {
   outline: 0;
   height: 100vh;
   font-family: Roboto, sans-serif;
+
+  color: #9f9f9f;
 }
 
 * {
