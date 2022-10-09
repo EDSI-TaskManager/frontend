@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "cssnano": "^5.1.13",
+    "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "husky": "^8.0.1",
     "next": "12.3.1",
