@@ -9,13 +9,13 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
 export const TextField = ({ label, value, setValue, ...restProps }: Props) => {
   return (
     <div>
-      <p>{label}</p>
+      <p className="font-semibold mb-1">{label}</p>
       <input
         {...restProps}
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="bg-gray100 text-white border-gray400 border-2 outline-0 rounded p-1"
+        className="bg-gray400 text-white border-black border outline-0 rounded p-1 w-full"
       />
     </div>
   );
