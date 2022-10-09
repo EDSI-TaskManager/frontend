@@ -1,4 +1,4 @@
-import { Background, TextField } from "../../components";
+import { Background, TextField, DateField } from "../../components";
 
 const Register = () => {
   return (
@@ -11,11 +11,7 @@ const Register = () => {
           <TextField label="E-MAIL" value="" setValue={console.log} />
           <TextField label="NOME DE USUÁRIO" value="" setValue={console.log} />
           <TextField label="SENHA" value="" setValue={console.log} />
-          <TextField
-            label="DATA DE NASCIMENTO"
-            value=""
-            setValue={console.log}
-          />
+          <DateField></DateField>
           <button className="bg-primary border-none rounded p-2 text-white font-bold">
             Continuar
           </button>
