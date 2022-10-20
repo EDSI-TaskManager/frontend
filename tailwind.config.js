@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         default: "url('/sun-tornado.svg')",
+        groupIcon: "url('/icons/group.svg')",
+        groupWhiteIcon: "url('/icons/group-white.svg')",
       },
     },
     colors: {
