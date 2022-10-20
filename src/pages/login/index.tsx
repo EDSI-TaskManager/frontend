@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import * as yup from "yup";
+// import toast from "react-hot-toast";
 import { TextField, Background } from "../../components/";
 
 import { login } from "../../controllers/login";
 import { useAuth } from "../../hooks/auth";
+import { setApiToken } from "../../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +19,7 @@ const Login = () => {
       const response = await login({ email, password });
 
       setToken(response.token);
+      setApiToken(response.token);
       router.push("/manager");
     } catch (error) {
       console.log(error);
