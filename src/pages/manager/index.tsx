@@ -37,7 +37,7 @@ const Manager = ({ teams, tasks }: Props) => {
 
       setTasks(response);
     } catch (error) {
-      toast(error.message);
+      toast("Erro interno");
     } finally {
       setTaskName("");
       setShowTaskModal(false);
@@ -54,7 +54,7 @@ const Manager = ({ teams, tasks }: Props) => {
 
       setTeams(response);
     } catch (error) {
-      toast(error.message);
+      toast("Erro interno");
     } finally {
       setTeamName("");
       setShowTeamModal(false);
