@@ -11,6 +11,7 @@ module.exports = {
         default: "url('/sun-tornado.svg')",
         groupIcon: "url('/icons/group.svg')",
         groupWhiteIcon: "url('/icons/group-white.svg')",
+        add: "url('/icons/add.svg')",
       },
     },
     colors: {

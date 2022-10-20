@@ -7,9 +7,17 @@ interface Props {
   children: ReactNode;
   items: string[];
   selectedIndex: number;
+  handleNewTask: () => void;
+  handleNewTeam: () => void;
 }
 
-export const SideBarLayout = ({ children, items, selectedIndex }: Props) => {
+export const SideBarLayout = ({
+  children,
+  items,
+  selectedIndex,
+  handleNewTask,
+  handleNewTeam,
+}: Props) => {
   const [selected, setSelected] = useState(selectedIndex);
 
   return (
@@ -31,14 +39,24 @@ export const SideBarLayout = ({ children, items, selectedIndex }: Props) => {
               ))}
             </div>
           </div>
-          <button className="m-4 p-3 bg-primary text-white rounded font-bold">
+          <button
+            className="m-4 p-3 bg-primary text-white rounded font-bold"
+            onClick={handleNewTeam}
+          >
             Novo time
           </button>
         </div>
       </div>
       <div className="w-full flex flex-col ">
-        <div className="bg-gray200 p-3 font-bold text-white text-3xl">
-          {items[selected]}
+        <div className="flex justify-between bg-gray200 p-3">
+          <p className="font-bold text-white text-3xl">{items[selected]}</p>
+          <button
+            className="flex items-center gap-2 pl-4 pr-4 bg-primary text-white rounded-full text-md"
+            onClick={handleNewTask}
+          >
+            <div className="bg-add w-8 h-8 "></div>
+            Nova tarefa
+          </button>
         </div>
         <div className="p-4">{children}</div>
       </div>
