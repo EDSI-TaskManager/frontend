@@ -6,7 +6,20 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        default: "url('/sun-tornado.svg')",
+      },
+    },
+    colors: {
+      primary: "#7289DA",
+      gray100: "#35373A",
+      gray200: "#2B2E32",
+      gray300: "#202226",
+      gray400: "#181A1D",
+      white: "#fff",
+      black: "#000",
+    },
   },
   plugins: [],
 };
