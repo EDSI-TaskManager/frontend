@@ -6,7 +6,7 @@ interface Body {
 }
 
 export async function login(body: Body) {
-  const { data } = await api.post("", body);
+  const { data } = await api.post("/auth/login", body);
 
   return data;
 }

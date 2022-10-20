@@ -1,9 +1,35 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
+import * as yup from "yup";
 import { TextField, Background } from "../../components/";
 
+import { login } from "../../services/login";
+
 const Login = () => {
-  const [emailOrUsername, setEmailOrUsername] = useState("");
-  const [passoword, setPassoword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async () => {
+    const schema = yup.object().shape({
+      email: yup.string().required(),
+      password: yup.string().required(),
+    });
+
+    const valid = await schema.isValid({
+      email,
+      password,
+    });
+
+    if (valid) {
+      try {
+        const data = await login({ email, password });
+
+        toast(JSON.stringify(data));
+      } catch (error: unknown) {
+        // toast(error as string);
+      }
+    }
+  };
 
   return (
     <Background>
@@ -13,20 +39,20 @@ const Login = () => {
             <h1 className="text-center text-white text-2xl font-bold mb-10">
               Boas vindas!
             </h1>
-            <TextField
-              label="E-MAIL OU NOME DE USUÁRIO"
-              value={emailOrUsername}
-              setValue={setEmailOrUsername}
-            />
+            <TextField label="E-MAIL" value={email} setValue={setEmail} />
             <TextField
               label="SENHA"
-              value={passoword}
-              setValue={setPassoword}
+              type="password"
+              value={password}
+              setValue={setPassword}
             />
             <a href="" className="text-primary">
               Esqueceu sua senha?
             </a>
-            <button className="bg-primary border-none rounded p-2 text-white font-bold">
+            <button
+              onClick={handleSubmit}
+              className="bg-primary border-none rounded p-2 text-white font-bold"
+            >
               Entar
             </button>
             <div>
