@@ -1,12 +1,14 @@
-import type { NextPage } from "next";
-import LoginForm from "../components/login-form";
+import type { GetServerSideProps, NextPage } from "next";
 
-const Home: NextPage = () => {
-  return (
-    <main>
-      <LoginForm />
-    </main>
-  );
+const Home: NextPage = () => null;
+
+/**
+ * TODO: if alredy logged, redirect to another page
+ */
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    redirect: { destination: "/login", permanent: false },
+  };
 };
 
 export default Home;
