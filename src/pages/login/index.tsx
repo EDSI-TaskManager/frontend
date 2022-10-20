@@ -1,33 +1,27 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import * as yup from "yup";
 import { TextField, Background } from "../../components/";
 
-import { login } from "../../services/login";
+import { login } from "../../controllers/login";
+import { useAuth } from "../../hooks/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { setToken } = useAuth();
+  const router = useRouter();
+
   const handleSubmit = async () => {
-    const schema = yup.object().shape({
-      email: yup.string().required(),
-      password: yup.string().required(),
-    });
+    try {
+      const response = await login({ email, password });
 
-    const valid = await schema.isValid({
-      email,
-      password,
-    });
-
-    if (valid) {
-      try {
-        const data = await login({ email, password });
-
-        toast(JSON.stringify(data));
-      } catch (error: unknown) {
-        // toast(error as string);
-      }
+      setToken(response.token);
+      router.push("/manager");
+    } catch (error) {
+      console.log(error);
     }
   };
 
