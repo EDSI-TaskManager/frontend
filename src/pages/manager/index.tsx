@@ -110,18 +110,18 @@ const Manager = ({ teams, tasks }: Props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let teams, tasks;
   try {
-    const listAllTeamsReasponse = await listAllTeams();
-    const listAllTasksReasponse = await listAllTasks();
+    const [teams, tasks] = await Promise.all([listAllTeams(), listAllTasks()]);
 
-    teams = listAllTeamsReasponse;
-    tasks = listAllTasksReasponse;
+    return { props: { teams: teams || [], tasks: tasks || [] } };
   } catch (error) {
-    // console.error("error: ", error);
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
   }
-
-  return { props: { teams: teams || [], tasks: tasks || [] } };
 };
 
 export default Manager;
