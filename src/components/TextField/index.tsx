@@ -22,7 +22,7 @@ export const TextField = ({
         type={type}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="bg-gray400 text-white border-black border outline-0 rounded p-1 w-full"
+        className="input-base"
       />
     </div>
   );

@@ -1,7 +1,10 @@
-import { GetServerSideProps } from "next";
 import { useState } from "react";
-import { SideBarLayout } from "../../components/layout/";
+import toast from "react-hot-toast";
+import { GetServerSideProps } from "next";
+
 import { ITask, ITeam } from "../../interfaces";
+
+import { SideBarLayout } from "../../components/layout/";
 import { Modal, TextField } from "../../components";
 
 import { addNewTask } from "../../controllers/tasks/addNewTask";
@@ -9,7 +12,6 @@ import { listAllTasks } from "../../controllers/tasks/listAllTasks";
 
 import { addNewTeam } from "../../controllers/teams/addNewTeam";
 import { listAllTeams } from "../../controllers/teams/listAllTeams";
-import toast from "react-hot-toast";
 
 interface Props {
   teams: ITeam[];

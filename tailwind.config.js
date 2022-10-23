@@ -23,6 +23,10 @@ module.exports = {
       white: "#fff",
       black: "#000",
     },
+    fontFamily: {
+      sans: ["Roboto", "sans-serif"],
+      serif: [],
+    },
   },
   plugins: [],
 };

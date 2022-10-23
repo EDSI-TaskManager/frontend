@@ -2,17 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  height: 100vh;
-  font-family: Roboto, sans-serif;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-  color: #9f9f9f;
+  html,
+  body {
+    color: #9f9f9f;
+  }
+
+  a {
+    @apply text-sm font-bold text-primary;
+  }
 }
 
-* {
-  box-sizing: border-box;
+@layer components {
+  .input-base {
+    @apply bg-gray400 text-white border-black border outline-0 rounded pt-1 pb-1 pl-2 pr-2 w-full;
+  }
+
+  .content-wrapper {
+    @apply h-full bg-gray100  flex flex-col justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto;
+  }
 }
+

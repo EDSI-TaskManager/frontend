@@ -1,10 +1,15 @@
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 // import toast from "react-hot-toast";
-import { TextField, Background } from "../../components/";
+
+import { TextField } from "../../components/";
+import { Background } from "../../components/layout";
 
 import { login } from "../../controllers/login";
+
 import { useAuth } from "../../hooks/auth";
+
 import { setApiToken } from "../../services/api";
 
 const Login = () => {
@@ -29,7 +34,7 @@ const Login = () => {
   return (
     <Background>
       <div className="block h-screen sm:flex sm:justify-center sm:items-center">
-        <div className="h-full bg-gray100  flex flex-col justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto">
+        <div className="content-wrapper ">
           <div className="flex flex-col gap-4">
             <h1 className="text-center text-white text-2xl font-bold mb-10">
               Boas vindas!
@@ -54,9 +59,7 @@ const Login = () => {
               <span className="text-sm font-bold">
                 Precisando de uma conta?{" "}
               </span>
-              <a href="" className="text-sm font-bold text-primary">
-                Registre-se
-              </a>
+              <Link href="/register">Registre-se</Link>
             </div>
           </div>
         </div>
