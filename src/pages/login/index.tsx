@@ -48,7 +48,7 @@ const Login = () => {
               onClick={handleSubmit}
               className="bg-primary border-none rounded p-2 text-white font-bold"
             >
-              Entar
+              Entrar
             </button>
             <div>
               <span className="text-sm font-bold">
