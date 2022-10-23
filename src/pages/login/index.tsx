@@ -1,34 +1,19 @@
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/router";
 // import toast from "react-hot-toast";
 
+import { useAuth } from "../../hooks/auth";
 import { TextField } from "../../components/";
 import { Background } from "../../components/layout";
-
-import { login } from "../../controllers/login";
-
-import { useAuth } from "../../hooks/auth";
-
-import { setApiToken } from "../../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setToken } = useAuth();
-  const router = useRouter();
+  const { signIn } = useAuth();
 
   const handleSubmit = async () => {
-    try {
-      const response = await login({ email, password });
-
-      setToken(response.token);
-      setApiToken(response.token);
-      router.push("/manager");
-    } catch (error) {
-      console.log(error);
-    }
+    await signIn({ email, password });
   };
 
   return (

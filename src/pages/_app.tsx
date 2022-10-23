@@ -1,14 +1,14 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
-import { Auth } from "../hooks/auth";
+import { AuthProvider } from "../hooks/auth";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Auth>
+    <AuthProvider>
       <Component {...pageProps} />
       <Toaster />
-    </Auth>
+    </AuthProvider>
   );
 }
 

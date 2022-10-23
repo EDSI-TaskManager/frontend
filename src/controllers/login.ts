@@ -1,15 +1,15 @@
 import { IUser } from "../interfaces";
 import { api } from "../services/api";
 
-interface Body {
-  email: string;
-  password: string;
-}
+type ResponseType = {
+  user: IUser;
+  token: string;
+};
 
-type FunctionType = (body: Body) => Promise<{ user: IUser; token: string }>;
+type FunctionType = (email: string, password: string) => Promise<ResponseType>;
 
-export const login: FunctionType = async (body: Body) => {
-  const response = await api.post("/auth/login", body);
+export const login: FunctionType = async (email: string, password: string) => {
+  const response = await api.post("/auth/login", { email, password });
 
   return response.data;
 };
