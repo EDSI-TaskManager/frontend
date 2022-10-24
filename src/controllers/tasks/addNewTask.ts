@@ -1,7 +1,5 @@
 import { ITask, ITaskDTO } from "../../interfaces";
-import { getApi } from "../../services/api";
-
-const api = getApi();
+import { api } from "../../services/api";
 
 type FunctionType = (body: ITaskDTO) => Promise<ITask[]>;
 
