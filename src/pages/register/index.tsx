@@ -1,9 +1,11 @@
-import { Background, TextField, DateField } from "../../components";
+import Link from "next/link";
+import { TextField, DateField } from "../../components";
+import { Background } from "../../components/layout";
 
 const Register = () => {
   return (
     <Background>
-      <div className="block h-screen sm:flex sm:justify-center sm:items-center">
+      <div className="block h-screen sm:flex sm:justify-center sm:items-center animate-appearFromLeft">
         <div className="h-full bg-gray100 flex flex-col gap-4 justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto">
           <p className="text-center text-white text-2xl font-bold ">
             Criar uma conta
@@ -12,21 +14,12 @@ const Register = () => {
           <TextField label="NOME DE USUÁRIO" value="" setValue={console.log} />
           <TextField label="SENHA" value="" setValue={console.log} />
           <DateField></DateField>
-          <button className="bg-primary border-none rounded p-2 text-white font-bold">
-            Continuar
-          </button>
-          <a href="" className="text-sm font-bold text-primary">
-            Já tem uma conta?
-          </a>
-          <p className=" text-xs">
+          <button className="button">Continuar</button>
+          <Link href="/login">Já tem uma conta?</Link>
+          <p className="text-xs">
             Ao se registrar você concorda com os{" "}
-            <a className="text-primary" href="">
-              termos de serviço
-            </a>{" "}
-            e a{" "}
-            <a className="text-primary" href="">
-              política de privacidade
-            </a>
+            <Link href="/terms">termos de serviço</Link> e a{" "}
+            <Link href="/privacy">política de privacidade</Link>
           </p>
         </div>
       </div>

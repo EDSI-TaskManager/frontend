@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { TextField } from "../../components/";
 import { Background } from "../../components/layout";
+import { PasswordField } from "../../components/PasswordField";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,19 +19,14 @@ const Login = () => {
 
   return (
     <Background>
-      <div className="block h-screen sm:flex sm:justify-center sm:items-center">
-        <div className="content-wrapper ">
+      <div className="block h-screen sm:flex sm:justify-center sm:items-center animate-appearFromLeft">
+        <div className="content-wrapper">
           <div className="flex flex-col gap-4">
             <h1 className="text-center text-white text-2xl font-bold mb-10">
               Boas vindas!
             </h1>
             <TextField label="E-MAIL" value={email} setValue={setEmail} />
-            <TextField
-              label="SENHA"
-              type="password"
-              value={password}
-              setValue={setPassword}
-            />
+            <PasswordField password={password} setPassword={setPassword} />
             <a href="" className="text-primary">
               Esqueceu sua senha?
             </a>
