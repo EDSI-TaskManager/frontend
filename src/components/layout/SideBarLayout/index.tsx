@@ -21,8 +21,8 @@ export const SideBarLayout = ({
   const [selected, setSelected] = useState(selectedIndex);
 
   return (
-    <div className="flex h-screen bg-gray300">
-      <div className="bg-gray200 border-r border-gray100  sm:w-80">
+    <div className="flex h-screen bg-gray-300">
+      <div className="bg-gray-200 border-r border-gray-100  sm:w-80">
         <div className="flex flex-col justify-between h-full">
           <div className="pr-8">
             <div className="flex m-6">
@@ -48,7 +48,7 @@ export const SideBarLayout = ({
         </div>
       </div>
       <div className="w-full flex flex-col ">
-        <div className="flex justify-between bg-gray200 p-3">
+        <div className="flex justify-between bg-gray-200 p-3">
           <p className="font-bold text-white text-3xl">{items[selected]}</p>
           <button
             className="flex items-center gap-2 pl-4 pr-4 bg-primary text-white rounded-full text-md"

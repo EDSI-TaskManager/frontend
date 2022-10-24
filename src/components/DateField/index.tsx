@@ -43,13 +43,13 @@ export const DateField = () => {
       <select
         placeholder="Dia"
         name="day"
-        className="w-1/3 bg-gray400 border-black border rounded p-2 outline-none"
+        className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
       >
         {dayOptions()}
       </select>
       <select
         name="month"
-        className="w-1/3 bg-gray400 border-black border rounded p-2 outline-none"
+        className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
       >
         {months.map((month) => (
           <option className="border-none" key={month} value={month}>
@@ -59,7 +59,7 @@ export const DateField = () => {
       </select>
       <select
         name="year"
-        className="w-1/3 bg-gray400 border-black border rounded p-2 outline-none"
+        className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
       >
         {yearOptions()}
       </select>

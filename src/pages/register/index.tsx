@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <Background>
       <div className="block h-screen sm:flex sm:justify-center sm:items-center animate-appearFromLeft">
-        <div className="h-full bg-gray100 flex flex-col gap-4 justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto">
+        <div className="h-full bg-gray-100 flex flex-col gap-4 justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto">
           <p className="text-center text-white text-2xl font-bold ">
             Criar uma conta
           </p>

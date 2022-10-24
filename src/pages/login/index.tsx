@@ -11,10 +11,23 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const { signIn } = useAuth();
 
   const handleSubmit = async () => {
-    await signIn({ email, password });
+    if (email === "") setEmailError("Campo obrigatório");
+    else setEmailError("");
+
+    if (password === "") setPasswordError("Campo obrigatório");
+    else setPasswordError("");
+
+    try {
+      await signIn({ email, password });
+    } catch (error) {
+      console.log(String(error));
+    }
   };
 
   return (

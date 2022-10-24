@@ -73,7 +73,7 @@ const Manager = ({ teams, tasks }: Props) => {
       >
         <div className="flex flex-col gap-4">
           {_tasks.map((task) => (
-            <div className="bg-gray100 p-2 rounded" key={task.id}>
+            <div className="bg-gray-100 p-2 rounded" key={task.id}>
               {task.name}
             </div>
           ))}

@@ -19,11 +19,11 @@
 
 @layer components {
   .input-base {
-    @apply bg-gray400  border-black border outline-0 rounded pt-1 pb-1 pl-2 pr-2 w-full;
+    @apply bg-gray-400  border-black border outline-0 rounded pt-1 pb-1 pl-2 pr-2 w-full;
   }
 
   .content-wrapper {
-    @apply h-full bg-gray100  flex flex-col justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto;
+    @apply h-full bg-gray-100  flex flex-col justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto;
   }
 
   .button {

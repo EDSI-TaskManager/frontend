@@ -16,12 +16,12 @@ export const PasswordField = ({ password, setPassword }: PropsType) => {
   return (
     <div>
       <p className="font-semibold mb-1">SENHA</p>
-      <div className="flex bg-gray400 p-1 rounded border-black border h-[34px]">
+      <div className="flex bg-gray-400 pt-1 pb-1 pl-2 pr-2 rounded border-black border h-[34px]">
         <input
           type={type}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-[100%] p-0 outline-none bg-gray400 h-6"
+          className="w-[100%] p-0 outline-none bg-gray-400 h-6"
         />
         <button onClick={toggleType}>
           {type === "text" ? <VisibilityOff /> : <Visibility />}
