@@ -14,16 +14,19 @@ export const PasswordField = ({ password, setPassword }: PropsType) => {
   };
 
   return (
-    <div className="flex bg-gray400 p-1 rounded border-black border h-[34px]">
-      <input
-        type={type}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="w-[100%] p-0 outline-none bg-gray400 h-6"
-      />
-      <button onClick={toggleType}>
-        {type === "text" ? <VisibilityOff /> : <Visibility />}
-      </button>
+    <div>
+      <p className="font-semibold mb-1">SENHA</p>
+      <div className="flex bg-gray400 p-1 rounded border-black border h-[34px]">
+        <input
+          type={type}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-[100%] p-0 outline-none bg-gray400 h-6"
+        />
+        <button onClick={toggleType}>
+          {type === "text" ? <VisibilityOff /> : <Visibility />}
+        </button>
+      </div>
     </div>
   );
 };
