@@ -98,10 +98,7 @@ const Manager = ({ teams, tasks }: Props) => {
           <div className="flex flex-col gap-4">
             <TextField label="Nome" setValue={setTaskName} value={taskName} />
 
-            <button
-              className="bg-primary rounded p-2 text-white"
-              onClick={handleAddTask}
-            >
+            <button className="button" onClick={handleAddTask}>
               Criar nova tarefa
             </button>
           </div>
