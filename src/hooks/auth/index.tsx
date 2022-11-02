@@ -4,6 +4,7 @@ import { createContext, ReactNode, useContext, useState } from "react";
 
 import { IUser } from "../../interfaces";
 import { login } from "../../controllers/login";
+import { api } from "../../services/api";
 
 type PropsType = {
   children: ReactNode;
@@ -35,6 +36,8 @@ export const AuthProvider = ({ children }: PropsType) => {
     setCookie(undefined, "task_manager.token", token, {
       maxAge: 60 * 60 * 1, // 1 hour
     });
+
+    api.defaults.headers["Authorization"] = "Bearer " + token;
 
     setUser(user);
 

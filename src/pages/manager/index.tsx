@@ -7,11 +7,9 @@ import { ITask, ITeam } from "../../interfaces";
 import { SideBarLayout } from "../../components/layout/";
 import { Modal, TextField } from "../../components";
 
-import { addNewTask } from "../../controllers/tasks/addNewTask";
-import { listAllTasks } from "../../controllers/tasks/listAllTasks";
-
-import { addNewTeam } from "../../controllers/teams/addNewTeam";
-import { listAllTeams } from "../../controllers/teams/listAllTeams";
+import { TeamController, TaskController } from "../../controllers/";
+import { getAPIClient } from "../../services/api";
+import { ENDPOINTS } from "../../constants/endpoints";
 
 interface Props {
   teams: ITeam[];
@@ -19,6 +17,9 @@ interface Props {
 }
 
 const Manager = ({ teams, tasks }: Props) => {
+  const teamController = new TeamController(getAPIClient(), ENDPOINTS.teams);
+  const taskController = new TaskController(getAPIClient(), ENDPOINTS.tasks);
+
   const [_teams, setTeams] = useState<ITeam[]>(teams);
   const [_tasks, setTasks] = useState<ITask[]>(tasks);
   const [showTeamModal, setShowTeamModal] = useState(false);
@@ -29,13 +30,13 @@ const Manager = ({ teams, tasks }: Props) => {
 
   const handleAddTask = async () => {
     try {
-      await addNewTask({
+      await taskController.create({
         name: taskName,
         end_time: new Date(),
         start_time: new Date(),
       });
 
-      const response = await listAllTasks();
+      const response = await taskController.listAll();
 
       setTasks(response);
     } catch (error) {
@@ -48,11 +49,9 @@ const Manager = ({ teams, tasks }: Props) => {
 
   const handleAddTeam = async () => {
     try {
-      await addNewTeam({
-        name: teamName,
-      });
+      await teamController.create({ name: teamName });
 
-      const response = await listAllTeams();
+      const response = await teamController.listAll();
 
       setTeams(response);
     } catch (error) {
@@ -108,9 +107,17 @@ const Manager = ({ teams, tasks }: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const api = getAPIClient(ctx);
+
+  const teamController = new TeamController(api, ENDPOINTS.teams);
+  const taskController = new TaskController(api, ENDPOINTS.tasks);
+
   try {
-    const [teams, tasks] = await Promise.all([listAllTeams(), listAllTasks()]);
+    const [teams, tasks] = await Promise.all([
+      teamController.listAll(),
+      taskController.listAll(),
+    ]);
 
     return { props: { teams: teams || [], tasks: tasks || [] } };
   } catch (error) {
