@@ -1,7 +1,9 @@
 import { AxiosInstance } from "axios";
 
 export class BaseController<T, K> {
-  constructor(private api: AxiosInstance, private endpoint: string) {}
+  protected endpoint!: string;
+
+  constructor(private api: AxiosInstance) {}
 
   async listAll(): Promise<T[]> {
     const response = await this.api.get(this.endpoint);

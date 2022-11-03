@@ -21,7 +21,7 @@ type AuthContextType = {
   signIn: (data: SignInData) => Promise<void>;
 };
 
-const AuthContext = createContext({} as AuthContextType);
+export const AuthContext = createContext({} as AuthContextType);
 
 export const useAuth = () => useContext(AuthContext);
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: PropsType) => {
   const isAuthenticated = !!user;
 
   async function signIn({ email, password }: SignInData) {
-    const { token, user } = await login(email, password);
+    const { token, user: _user } = await login(email, password);
 
     setCookie(undefined, "task_manager.token", token, {
       maxAge: 60 * 60 * 1, // 1 hour
@@ -39,9 +39,14 @@ export const AuthProvider = ({ children }: PropsType) => {
 
     api.defaults.headers["Authorization"] = "Bearer " + token;
 
-    setUser(user);
+    console.log(JSON.stringify(_user));
+    setUser(_user);
 
-    Router.push("/manager");
+    if (_user.role === "Manager") {
+      Router.push("/dashboard/manager");
+    } else {
+      Router.push("/dashboard/employee");
+    }
   }
 
   return (

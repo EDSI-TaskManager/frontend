@@ -15,7 +15,7 @@ export const PasswordField = ({ password, setPassword }: PropsType) => {
 
   return (
     <div>
-      <p className="font-semibold mb-1">SENHA</p>
+      <p className="input-label">SENHA</p>
       <div className="flex bg-gray-400 pt-1 pb-1 pl-2 pr-2 rounded border-black border h-[34px]">
         <input
           type={type}

@@ -9,7 +9,6 @@ import { Modal, TextField } from "../../components";
 
 import { TeamController, TaskController } from "../../controllers/";
 import { getAPIClient } from "../../services/api";
-import { ENDPOINTS } from "../../constants/endpoints";
 
 interface Props {
   teams: ITeam[];
@@ -17,8 +16,8 @@ interface Props {
 }
 
 const Manager = ({ teams, tasks }: Props) => {
-  const teamController = new TeamController(getAPIClient(), ENDPOINTS.teams);
-  const taskController = new TaskController(getAPIClient(), ENDPOINTS.tasks);
+  const teamController = new TeamController(getAPIClient());
+  const taskController = new TaskController(getAPIClient());
 
   const [_teams, setTeams] = useState<ITeam[]>(teams);
   const [_tasks, setTasks] = useState<ITask[]>(tasks);
@@ -110,8 +109,8 @@ const Manager = ({ teams, tasks }: Props) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const api = getAPIClient(ctx);
 
-  const teamController = new TeamController(api, ENDPOINTS.teams);
-  const taskController = new TaskController(api, ENDPOINTS.tasks);
+  const teamController = new TeamController(api);
+  const taskController = new TaskController(api);
 
   try {
     const [teams, tasks] = await Promise.all([

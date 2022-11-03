@@ -5,6 +5,7 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
   type?: "text" | "password";
+  errorLabel?: string | null;
 }
 
 export const TextField = ({
@@ -12,11 +13,12 @@ export const TextField = ({
   value,
   setValue,
   type = "text",
+  errorLabel,
   ...restProps
 }: Props) => {
   return (
     <div>
-      <p className="font-semibold mb-1">{label}</p>
+      <p className="input-label">{label}</p>
       <input
         {...restProps}
         type={type}
@@ -24,6 +26,8 @@ export const TextField = ({
         onChange={(e) => setValue(e.target.value)}
         className="input-base"
       />
+
+      {!!errorLabel && <p className="input-error-label">{errorLabel}</p>}
     </div>
   );
 };

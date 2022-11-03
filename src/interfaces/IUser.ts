@@ -6,7 +6,7 @@ export interface IUser {
   email: string;
   password: string;
   office: string;
-  role: string;
+  role: "Manager" | "Employee";
   team: ITeam;
   createdAt: string;
   updatedAt: string;

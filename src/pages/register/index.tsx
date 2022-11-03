@@ -1,8 +1,18 @@
 import Link from "next/link";
-import { TextField, DateField } from "../../components";
+import { useState } from "react";
+import { TextField } from "../../components";
 import { Background } from "../../components/layout";
+import { PasswordField } from "../../components/PasswordField";
 
 const Register = () => {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
     <Background>
       <div className="block h-screen sm:flex sm:justify-center sm:items-center animate-appearFromLeft">
@@ -10,11 +20,16 @@ const Register = () => {
           <p className="text-center text-white text-2xl font-bold ">
             Criar uma conta
           </p>
-          <TextField label="E-MAIL" value="" setValue={console.log} />
-          <TextField label="NOME DE USUÁRIO" value="" setValue={console.log} />
-          <TextField label="SENHA" value="" setValue={console.log} />
-          <DateField></DateField>
-          <button className="button">Continuar</button>
+          <TextField label="E-MAIL" value={email} setValue={setEmail} />
+          <TextField
+            label="NOME DE USUÁRIO"
+            value={username}
+            setValue={setUsername}
+          />
+          <PasswordField password={password} setPassword={setPassword} />
+          <button className="button" onClick={handleSubmit}>
+            Continuar
+          </button>
           <Link href="/login">Já tem uma conta?</Link>
           <p className="text-xs">
             Ao se registrar você concorda com os{" "}

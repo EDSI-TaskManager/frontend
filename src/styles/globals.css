@@ -22,12 +22,28 @@
     @apply bg-gray-400  border-black border outline-0 rounded pt-1 pb-1 pl-2 pr-2 w-full;
   }
 
+  .input-label {
+    @apply font-semibold mb-1;
+  }
+
   .content-wrapper {
-    @apply h-full bg-gray-100  flex flex-col justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto;
+    @apply h-full bg-gray-100  flex flex-col border  justify-center sm:w-[26rem] p-8 sm:rounded-lg sm:h-auto;
   }
 
   .button {
     @apply bg-primary border-none rounded p-2 text-white font-bold;
+  }
+
+  .input-error-label {
+    @apply text-red text-sm ml-1 mt-1;
+  }
+
+  .large-text {
+    @apply text-xl text-white font-bold sm:text-2xl;
+  }
+
+  .loading {
+    @apply rounded-full border-t-2 border-b-0 border-l-0 border-r-0 border-white h-16 w-16;
   }
 }
 

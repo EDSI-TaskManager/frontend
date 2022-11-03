@@ -1,6 +1,15 @@
+import { useState } from "react";
 import { getYear } from "date-fns";
 
-export const DateField = () => {
+type Props = {
+  label: string;
+  date: Date | null;
+  setDate: (date: Date) => void;
+};
+
+export const DateField = ({ date = new Date(), label }: Props) => {
+  const [_date, setDate] = useState(date);
+
   const dayOptions = () => {
     const options = [];
     for (let day = 1; day <= 31; day++)
@@ -38,31 +47,36 @@ export const DateField = () => {
     return options;
   };
 
+  const handleDateChange = (date: Date) => {};
+
   return (
-    <div className="flex w-full gap-2">
-      <select
-        placeholder="Dia"
-        name="day"
-        className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
-      >
-        {dayOptions()}
-      </select>
-      <select
-        name="month"
-        className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
-      >
-        {months.map((month) => (
-          <option className="border-none" key={month} value={month}>
-            {month}
-          </option>
-        ))}
-      </select>
-      <select
-        name="year"
-        className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
-      >
-        {yearOptions()}
-      </select>
+    <div>
+      <p className="input-label">{label}</p>
+      <div className="flex w-full gap-2">
+        <select
+          placeholder="Dia"
+          name="day"
+          className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
+        >
+          {dayOptions()}
+        </select>
+        <select
+          name="month"
+          className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
+        >
+          {months.map((month) => (
+            <option className="border-none" key={month} value={month}>
+              {month}
+            </option>
+          ))}
+        </select>
+        <select
+          name="year"
+          className="w-1/3 bg-gray-400 border-black border rounded p-2 outline-none"
+        >
+          {yearOptions()}
+        </select>
+      </div>
     </div>
   );
 };
