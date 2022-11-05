@@ -2,7 +2,6 @@ import { GetServerSideProps } from "next";
 import { Header } from "../../../components/Header";
 import { Dashboard } from "../../../components/layout/Dashboard";
 import { TaskController, TeamController } from "../../../controllers";
-import { useAuth } from "../../../hooks/auth";
 import { ITask, ITeam } from "../../../interfaces";
 import { getAPIClient } from "../../../services/api";
 
@@ -11,9 +10,7 @@ interface Props {
   tasks: ITask[];
 }
 
-const Employee = ({ tasks, teams }: Props) => {
-  const { user } = useAuth();
-
+const Employee = ({ tasks }: Props) => {
   return (
     <div className="h-screen flex flex-col bg-gray-400">
       <Header pageName="DASHBOARD" />

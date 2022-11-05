@@ -4,9 +4,14 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 type PropsType = {
   password: string;
   setPassword: (value: string) => void;
+  errorLabel?: string | null;
 };
 
-export const PasswordField = ({ password, setPassword }: PropsType) => {
+export const PasswordField = ({
+  password,
+  setPassword,
+  errorLabel,
+}: PropsType) => {
   const [type, setType] = useState<"text" | "password">("password");
 
   const toggleType = () => {
@@ -27,6 +32,7 @@ export const PasswordField = ({ password, setPassword }: PropsType) => {
           {type === "text" ? <VisibilityOff /> : <Visibility />}
         </button>
       </div>
+      {!!errorLabel && <p className="input-error-label">{errorLabel}</p>}
     </div>
   );
 };

@@ -2,16 +2,15 @@ import { GetServerSideProps } from "next";
 import { Header } from "../../../components/Header";
 import { Dashboard } from "../../../components/layout/Dashboard";
 import { TaskController, TeamController } from "../../../controllers";
-import { useAuth } from "../../../hooks/auth";
-import { ITask, ITeam } from "../../../interfaces";
 import { getAPIClient } from "../../../services/api";
 
-interface Props {
-  teams: ITeam[];
-  tasks: ITask[];
-}
+// import { ITask, ITeam } from "../../../interfaces";
+// interface Props {
+//   teams: ITeam[];
+//   tasks: ITask[];
+// }
 
-const Employee = () => {
+const ManagerDashboard = () => {
   return (
     <div className="h-screen flex flex-col bg-gray-400">
       <Header pageName="DASHBOARD" />
@@ -30,7 +29,7 @@ const Employee = () => {
   );
 };
 
-export default Employee;
+export default ManagerDashboard;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const api = getAPIClient(ctx);

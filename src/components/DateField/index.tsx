@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { getYear } from "date-fns";
 
 type Props = {
@@ -7,9 +6,7 @@ type Props = {
   setDate: (date: Date) => void;
 };
 
-export const DateField = ({ date = new Date(), label }: Props) => {
-  const [_date, setDate] = useState(date);
-
+export const DateField = ({ label }: Props) => {
   const dayOptions = () => {
     const options = [];
     for (let day = 1; day <= 31; day++)
@@ -47,7 +44,7 @@ export const DateField = ({ date = new Date(), label }: Props) => {
     return options;
   };
 
-  const handleDateChange = (date: Date) => {};
+  // const handleDateChange = (date: Date) => {};
 
   return (
     <div>

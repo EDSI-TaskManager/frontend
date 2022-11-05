@@ -1,7 +1,8 @@
 import axios from "axios";
+import { GetServerSidePropsContext } from "next";
 import { parseCookies } from "nookies";
 
-export const getAPIClient = (ctx?: any) => {
+export const getAPIClient = (ctx?: GetServerSidePropsContext) => {
   const { "task_manager.token": token } = parseCookies(ctx);
 
   const api = axios.create({

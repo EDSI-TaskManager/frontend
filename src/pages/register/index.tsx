@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { useState } from "react";
-import { TextField } from "../../components";
+import { useState, MouseEventHandler } from "react";
 import { Background } from "../../components/layout";
-import { PasswordField } from "../../components/PasswordField";
+import { TextField, PasswordField } from "../../components";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (data: any) => {
+  const handleSubmit: MouseEventHandler<HTMLButtonElement> = (data) => {
     console.log(data);
   };
 

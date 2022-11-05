@@ -1,14 +1,14 @@
 import Link from "next/link";
+import { AxiosError } from "axios";
+import { GetServerSideProps } from "next";
 import { KeyboardEvent, useState } from "react";
 // import toast from "react-hot-toast";
 
 import { useAuth } from "../../hooks/auth";
-import { TextField } from "../../components/";
+import { TextField, PasswordField } from "../../components/";
 import { Background } from "../../components/layout";
-import { PasswordField } from "../../components/PasswordField";
-import { AxiosError } from "axios";
 import { getAPIClient } from "../../services/api";
-import { GetServerSideProps } from "next";
+
 import { AuthController } from "../../controllers/AuthController";
 
 const Login = () => {
@@ -76,7 +76,11 @@ const Login = () => {
               setValue={setEmail}
               errorLabel={emailError}
             />
-            <PasswordField password={password} setPassword={setPassword} />
+            <PasswordField
+              password={password}
+              setPassword={setPassword}
+              errorLabel={passwordError}
+            />
             <a href="" className="text-primary">
               Esqueceu sua senha?
             </a>
