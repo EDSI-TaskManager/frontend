@@ -10,24 +10,38 @@ interface Props {
   tasks: ITask[];
 }
 
-const Employee = ({ tasks }: Props) => {
+const Employee = ({ teams, tasks }: Props) => {
   return (
     <div className="h-screen flex flex-col bg-gray-400">
       <Header pageName="DASHBOARD" />
       <Dashboard>
-        <div className="bg-gray-100 w-full row-start-1 row-end-4 rounded-lg p-4 flex flex-col gap-4">
+        <div className="bg-gray-100 w-full row-start-1 row-end-3 rounded-lg p-4 flex flex-col gap-4">
           <div className="border-b pb-2 border-white font-bold text-xl text-white">
             Seus Times
           </div>
-          {tasks.map((task) => (
-            <div key={task.id}>{task.name}</div>
+          {teams.map((team) => (
+            <div
+              key={team.id}
+              className="p-4 rounded bg-gray-200 border-gray-400 border hover:grayscale"
+            >
+              {team.name}
+            </div>
           ))}
         </div>
         <div className="bg-gray-100 w-full rounded-lg"></div>
         <div className="bg-gray-100 w-full rounded-lg">item</div>
-        <div className="bg-gray-100 w-full rounded-lg">item</div>
-        <div className="bg-gray-100 w-full row-start-1 row-end-4 col-start-3 rounded-lg">
-          item
+        <div className="bg-gray-100 w-full row-start-1 row-end-3 rounded-lg p-4 flex flex-col gap-4">
+          <div className="border-b pb-2 border-white font-bold text-xl text-white">
+            Suas Tarefas
+          </div>
+          {tasks.map((task) => (
+            <div
+              key={task.id}
+              className="p-4 rounded bg-gray-200 border-gray-400 border hover:grayscale"
+            >
+              {task.name}
+            </div>
+          ))}
         </div>
       </Dashboard>
     </div>

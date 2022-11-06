@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react";
-import { Item } from "./Item";
 
-import { Logo } from "../..";
+import { Item } from "./Item";
+import { Logo } from "../../index";
 
 interface Props {
   children: ReactNode;
@@ -51,10 +51,10 @@ export const SideBarLayout = ({
         <div className="flex justify-between bg-gray-200 p-3">
           <p className="font-bold text-white text-3xl">{items[selected]}</p>
           <button
-            className="flex items-center gap-2 pl-4 pr-4 bg-primary text-white rounded-full text-md"
+            className="flex items-center gap-2 pl-4 pr-4 bg-primary text-white rounded text-md  font-bold"
             onClick={handleNewTask}
           >
-            <div className="bg-add w-8 h-8 "></div>
+            <div className="bg-add bg-contain w-6 h-6 "></div>
             Nova tarefa
           </button>
         </div>

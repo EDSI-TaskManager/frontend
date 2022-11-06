@@ -66,8 +66,12 @@ const Login = () => {
               Boas vindas!
             </h1>
             {errorMessage && (
-              <div className="bg-red/20 rounded p-2 text-red">
-                {errorMessage}
+              <div className="bg-red/20 rounded p-2 text-red flex justify-between">
+                <p>{errorMessage}</p>
+                <div
+                  className="bg-closeRed bg-contain h-6 w-6 cursor-pointer"
+                  onClick={() => setErrorMessage("")}
+                ></div>
               </div>
             )}
             <TextField
@@ -113,7 +117,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     if (response.role === "Manager") {
       return {
         redirect: {
-          destination: "/dashboard/manager",
+          destination: "/manager",
           permanent: false,
         },
       };

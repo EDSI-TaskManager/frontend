@@ -13,11 +13,9 @@ export const Modal = ({ children, title, onClose }: Props) => {
         <div className=" flex justify-between mb-4">
           <div className="text-white ">{title}</div>
           <div
-            className="text-white font-bold cursor-pointer text-xl"
+            className="cursor-pointer bg-closeWhite h-6 w-6 bg-contain"
             onClick={onClose}
-          >
-            X
-          </div>
+          ></div>
         </div>
         <div>{children}</div>
       </div>
