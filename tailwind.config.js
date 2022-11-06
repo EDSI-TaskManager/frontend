@@ -12,6 +12,8 @@ module.exports = {
         groupIcon: "url('/icons/group.svg')",
         groupWhiteIcon: "url('/icons/group-white.svg')",
         add: "url('/icons/add.svg')",
+        closeRed: "url('/icons/close-red.svg')",
+        closeWhite: "url('/icons/close-white.svg')",
       },
       animation: {
         appearFromLeft: "appearFromLeft 1s",
