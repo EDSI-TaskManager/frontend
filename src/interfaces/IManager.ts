@@ -11,4 +11,5 @@ export interface IManager {
 export interface IManagerDTO {
   name: string;
   email: string;
+  password: string;
 }
