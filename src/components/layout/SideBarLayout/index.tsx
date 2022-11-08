@@ -33,7 +33,7 @@ export const SideBarLayout = ({
             </div>
             <div className="mt-4 flex flex-col gap-2">
               {items.map((item, index) => (
-                <div key={item} onClick={() => setSelected(index)}>
+                <div key={index} onClick={() => setSelected(index)}>
                   <Item label={item} selected={selected === index} />
                 </div>
               ))}
