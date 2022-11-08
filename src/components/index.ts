@@ -3,3 +3,4 @@ export { DateField } from "./DateField";
 export { PasswordField } from "./PasswordField";
 export { Logo } from "./Logo";
 export { Modal } from "./Modal";
+export { Switch } from "./Switch";
