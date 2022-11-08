@@ -1,15 +1,50 @@
 import Link from "next/link";
 import { useState, MouseEventHandler } from "react";
+
+import { api } from "../../services/api";
+import { Role } from "../../interfaces/IUser";
 import { Background } from "../../components/layout";
-import { TextField, PasswordField } from "../../components";
+import { TextField, PasswordField, Switch } from "../../components";
 
 const Register = () => {
+  const [role, setRole] = useState<Role>("Employee");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit: MouseEventHandler<HTMLButtonElement> = (data) => {
-    console.log(data);
+  const handleSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
+    if (role === "Employee") {
+      const { EmployeeController } = await import("../../controllers/");
+      const employeeController = new EmployeeController(api);
+
+      try {
+        const response = await employeeController.create({
+          email,
+          password,
+          name,
+          office: "",
+        });
+
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      const { ManagerController } = await import("../../controllers/");
+      const managerController = new ManagerController(api);
+
+      try {
+        const response = await managerController.create({
+          name,
+          email,
+          password,
+        });
+
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   return (
@@ -19,12 +54,14 @@ const Register = () => {
           <p className="text-center text-white text-2xl font-bold ">
             Criar uma conta
           </p>
-          <TextField label="E-MAIL" value={email} setValue={setEmail} />
-          <TextField
-            label="NOME DE USUÁRIO"
-            value={username}
-            setValue={setUsername}
+          <Switch
+            label="CARGO"
+            options={["Funcionário", "Supervisor"]}
+            selected={role}
+            onRoleChange={setRole}
           />
+          <TextField label="E-MAIL" value={email} setValue={setEmail} />
+          <TextField label="NOME" value={name} setValue={setName} />
           <PasswordField password={password} setPassword={setPassword} />
           <button className="button" onClick={handleSubmit}>
             Continuar
