@@ -2,14 +2,18 @@ import Link from "next/link";
 import { useState, MouseEventHandler } from "react";
 
 import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 import { Role } from "../../interfaces/IUser";
 import { Background } from "../../components/layout";
 import { TextField, PasswordField, Switch } from "../../components";
 
 const Register = () => {
+  const { signIn } = useAuth();
+
   const [role, setRole] = useState<Role>("Employee");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [office, setOffice] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
@@ -18,14 +22,14 @@ const Register = () => {
       const employeeController = new EmployeeController(api);
 
       try {
-        const response = await employeeController.create({
+        await employeeController.create({
           email,
           password,
           name,
-          office: "",
+          office,
         });
 
-        console.log(response);
+        await signIn({ email, password });
       } catch (error) {
         console.error(error);
       }
@@ -34,13 +38,13 @@ const Register = () => {
       const managerController = new ManagerController(api);
 
       try {
-        const response = await managerController.create({
+        await managerController.create({
           name,
           email,
           password,
         });
 
-        console.log(response);
+        await signIn({ email, password });
       } catch (error) {
         console.error(error);
       }
@@ -62,6 +66,9 @@ const Register = () => {
           />
           <TextField label="E-MAIL" value={email} setValue={setEmail} />
           <TextField label="NOME" value={name} setValue={setName} />
+          {role === "Employee" && (
+            <TextField label="ESCRITÓRIO" value={office} setValue={setOffice} />
+          )}
           <PasswordField password={password} setPassword={setPassword} />
           <button className="button" onClick={handleSubmit}>
             Continuar
